@@ -5,3 +5,4 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var test = function test() {
   _classCallCheck(this, test);
 };
+//# sourceMappingURL=es5-class.js.map
