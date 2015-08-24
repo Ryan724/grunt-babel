@@ -1,0 +1,23 @@
+{
+  "name": "grunt-babel"
+  ,"description": "Turn ES6 code into vanilla ES5 with no runtime required"
+  ,"author": {
+  			"name":"zheng Ryan"
+  			,"email":"zhengpj3@gmail.com"
+  }
+  ,"repository": {
+  			"type" : "git"
+    		,"url" : "http://github.com/npm/npm.git"
+    	}
+  ,"dependencies": {
+    		"babel-core": "^5.0.0"
+  }
+  ,"devDependencies": {
+    		"grunt": "^0.4.5"
+    		,"grunt-cli": "^0.1.13"
+    		,"grunt-contrib-clean": "^0.6.0"
+    		,"grunt-contrib-watch": "~0.4.3"
+    		,"grunt-contrib-nodeunit": "^0.4.1"
+     		,"load-grunt-tasks": "~0.5.0"
+  }
+}
