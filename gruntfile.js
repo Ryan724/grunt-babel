@@ -30,7 +30,7 @@ module.exports = function (grunt) {
 		var origFileName = origFilepath.slice(origFilepath.lastIndexOf('/')+1);
 		config.babel[origFileName] = {
 				options: {
-					sourceMap: true
+					sourceMap: false
 				},
 				src: ["es6/"+origFileName],
 				dest: "es5/"+origFileName
@@ -38,6 +38,6 @@ module.exports = function (grunt) {
 	}
 	grunt.initConfig(config);
 	grunt.loadTasks("tasks");
-	grunt.registerTask('default',['clean','babel', 'nodeunit',"watch"]);
+	grunt.registerTask('default',['clean','babel',"watch"]);
 	require('load-grunt-tasks')(grunt);
 };
