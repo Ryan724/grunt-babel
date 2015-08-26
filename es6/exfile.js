@@ -1,9 +1,9 @@
 export default class Exfile {
 	 constructor() {
-	 	let {a,b,c} =[1,2,3]
+	 	this.a=1;
 	 	console.log('constructor');
 	 }
 	 fun1(){
-	 	console.log(a,b,c,'fun1')
+	 	console.log(this.a,'fun1')
 	 }
 }
