@@ -5,7 +5,7 @@ module.exports = function (grunt) {
 		,banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd H:MM") %> */'
 		,watch:{
 			babel: {
-				files: ['es6/*.js']
+				files: ['es6/*.js','es6/*/*.js']
 				,tasks: 'babel'
 			}
 		}
@@ -24,18 +24,30 @@ module.exports = function (grunt) {
 			test: ['es5/**.js']
 		}
 	}
-	var origFilepaths = grunt.file.expand('es6/*.js');
-	for(var i=0;i<origFilepaths.length;i++){
-		var origFilepath = origFilepaths[i];
-		var origFileName = origFilepath.slice(origFilepath.lastIndexOf('/')+1);
-		config.babel[origFileName] = {
-				options: {
-					sourceMap: false
-				},
-				src: ["es6/"+origFileName],
-				dest: "es5/"+origFileName
+
+	//循环目录，如果是文件夹，循环进去，如果是文件夹添加任务babel
+	var clcDir = function(path){
+		var origFilepaths = grunt.file.expand(path);
+		origFilepaths.forEach(function(origFilepath){
+			if(grunt.file.isDir(origFilepath)){
+				clcDir(origFilepath+"/*");
 			}
+			if(grunt.file.isFile(origFilepath)){
+				// var origFileName = origFilepath.slice(origFilepath.lastIndexOf('/')+1);
+				var origFileName =origFilepath;
+				var destFileName = "es5/"+origFileName.slice(origFileName.indexOf("es6/")+4);
+				console.log(destFileName);
+				config.babel[origFileName] = {
+						options: {sourceMap: false},
+						src: [origFileName],
+						dest: destFileName
+				}
+			}
+
+		})
+
 	}
+	clcDir("es6/*")
 	grunt.initConfig(config);
 	grunt.loadTasks("tasks");
 	grunt.registerTask('default',['clean','babel',"watch"]);
