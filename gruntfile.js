@@ -33,11 +33,11 @@ module.exports = function (grunt) {
 					sourceMap: true
 				},
 				src: ["es6/"+origFileName],
-				dest: "es5/es5-"+origFileName
+				dest: "es5/"+origFileName
 			}
 	}
 	grunt.initConfig(config);
 	grunt.loadTasks("tasks");
-	grunt.registerTask('wcbn',['clean','babel', 'nodeunit',"watch"]);
+	grunt.registerTask('default',['clean','babel', 'nodeunit',"watch"]);
 	require('load-grunt-tasks')(grunt);
 };
