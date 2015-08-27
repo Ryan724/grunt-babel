@@ -33,10 +33,8 @@ module.exports = function (grunt) {
 				clcDir(origFilepath+"/*");
 			}
 			if(grunt.file.isFile(origFilepath)){
-				// var origFileName = origFilepath.slice(origFilepath.lastIndexOf('/')+1);
 				var origFileName =origFilepath;
 				var destFileName = "es5/"+origFileName.slice(origFileName.indexOf("es6/")+4);
-				console.log(destFileName);
 				config.babel[origFileName] = {
 						options: {sourceMap: false},
 						src: [origFileName],
