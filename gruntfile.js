@@ -32,7 +32,8 @@ module.exports = function(grunt) {
 			if (grunt.file.isDir(origFilepath)) {
 				clcDir(origFilepath + "/*");
 			}
-			if (grunt.file.isFile(origFilepath)) {
+			if (grunt.file.isFile(origFilepath)&&(origFilepath.substring(origFilepath.length-3)===".js")) {
+				console.log(origFilepath)
 				var origFileName = origFilepath;
 				var destFileName = "es5/" + origFileName.slice(origFileName.indexOf("es6/") + 4);
 				config.babel[origFileName] = {
