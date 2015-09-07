@@ -7,6 +7,14 @@ module.exports = function(grunt) {
 			babel: {
 				files: ['es6/*.js', 'es6/*/*.js'],
 				tasks: 'babel'
+			},
+			less: {
+				files: ['css/*.less'],
+				tasks: ['less']
+			}
+			,sass:{
+				files: ['css/*.scss'],
+				tasks: ['sass']
 			}
 		},
 		babel: {
@@ -22,6 +30,20 @@ module.exports = function(grunt) {
 		},
 		clean: {
 			test: ['es5/**.js']
+		},
+		less: {
+			compile: {
+				files: {
+					'css/test.css': 'css/*.less'
+				}
+			}
+		},
+		sass: {
+			compile: {
+				files: {
+					'css/main.css': 'css/*.scss'
+				}
+			}
 		}
 	}
 
@@ -32,7 +54,7 @@ module.exports = function(grunt) {
 			if (grunt.file.isDir(origFilepath)) {
 				clcDir(origFilepath + "/*");
 			}
-			if (grunt.file.isFile(origFilepath)&&(origFilepath.substring(origFilepath.length-3)===".js")) {
+			if (grunt.file.isFile(origFilepath) && (origFilepath.substring(origFilepath.length - 3) === ".js")) {
 				console.log(origFilepath)
 				var origFileName = origFilepath;
 				var destFileName = "es5/" + origFileName.slice(origFileName.indexOf("es6/") + 4);
