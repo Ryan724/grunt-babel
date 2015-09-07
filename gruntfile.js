@@ -40,6 +40,9 @@ module.exports = function(grunt) {
 		},
 		sass: {
 			compile: {
+				options: {
+					sourceMap: false
+				},
 				files: {
 					'css/main.css': 'css/*.scss'
 				}
